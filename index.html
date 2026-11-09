@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مهارات Claude | حسام جبالي</title>
+<meta name="description" content="خمس مهارات لـ Claude: Arena وTask Observer وClaude-Mem وHeadroom وOmniRoute، مع شرح وطريقة التثبيت وروابط المصادر الرسمية.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zain:wght@400;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0B0620; --ink:#160D33; --glass:rgba(255,255,255,.07); --line:rgba(255,255,255,.16);
+  --sand:#F3EBDD; --soft:#D9D1E2; --mute:#A79FBC; --mango:#FFD25A; --orange:#FF6B3D;
+  --lilac:#A99BFF; --mint:#6FD6B5; --sky:#7CC4FF; --amber:#FFB02E; --pink:#FF4FA3;
+  --display:'Zain','Tajawal',system-ui,sans-serif; --body:'Tajawal','Zain',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+body{margin:0;background:var(--night);color:var(--sand);font-family:var(--body);font-size:17px;line-height:1.75;
+  background-image:radial-gradient(ellipse 80% 40% at 50% 0%,#34206A 0%,#1F1244 45%,var(--night) 80%);background-attachment:fixed}
+.wrap{max-width:860px;margin:0 auto;padding:56px max(18px,env(safe-area-inset-right)) 80px}
+header{text-align:center;margin-bottom:44px}
+.tag{display:inline-block;background:var(--sand);color:var(--night);font-family:var(--display);font-weight:800;padding:2px 20px;border-radius:999px;font-size:18px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,8vw,68px);line-height:1.15;margin:16px 0 8px}
+h1 mark{background:var(--mango);color:var(--night);padding:0 .35em;border-radius:12px;transform:rotate(-2deg);display:inline-block}
+.lead{color:var(--soft);font-size:20px;max-width:34em;margin:0 auto}
+.card{min-width:0;--accent:var(--lilac);position:relative;background:var(--glass);border:1.5px solid var(--line);border-radius:26px;padding:26px 26px 22px;margin:0 0 26px;
+  backdrop-filter:blur(6px);box-shadow:0 20px 50px rgba(0,0,0,.35),0 0 40px color-mix(in srgb,var(--accent) 22%,transparent)}
+.card::before{content:"";position:absolute;inset:0 0 auto auto;width:100%;height:4px;border-radius:26px 26px 0 0;background:var(--accent)}
+.head{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.name{font-family:'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:28px;background:var(--sand);color:var(--night);padding:2px 18px;border-radius:999px;direction:ltr}
+.title{font-family:var(--display);font-weight:800;font-size:32px;color:var(--accent)}
+.card p{margin:10px 0 0;color:var(--soft)}
+ul.what{margin:14px 0 0;padding:0 22px 0 0;color:var(--sand)}
+ul.what li{margin:4px 0}
+.how{margin-top:18px;background:rgba(5,3,16,.55);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.how h3{margin:0 0 8px;font-family:var(--display);font-size:20px;color:var(--mute);font-weight:700}
+.cmd{display:flex;align-items:center;gap:10px;direction:ltr;background:#06030f;border:1px solid var(--line);border-radius:12px;padding:8px 8px 8px 14px;margin:6px 0}
+.cmd code{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14.5px;color:#E6E0FF}
+.cmd button{flex:none;font-family:var(--body);font-weight:700;font-size:14px;background:var(--accent);color:var(--night);border:0;border-radius:9px;padding:5px 14px;cursor:pointer}
+.cmd button:focus-visible,.btn:focus-visible{outline:3px solid var(--mango);outline-offset:2px}
+.note{margin-top:10px;font-size:15.5px;color:var(--mute)}
+.note b{color:var(--sand)}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btn{display:inline-block;text-decoration:none;font-family:var(--display);font-weight:800;font-size:20px;border-radius:14px;padding:6px 20px}
+.btn.main{background:var(--accent);color:var(--night)}
+.btn.ghost{border:1.5px solid var(--line);color:var(--sand)}
+.arena{--accent:var(--lilac)} .obs{--accent:var(--mango)} .mem{--accent:var(--sky)} .head-room{--accent:var(--amber)} .omni{--accent:var(--pink)}
+footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);color:var(--mute);font-size:15px}
+footer h2{font-family:var(--display);font-size:24px;color:var(--sand);margin:0 0 8px}
+footer ul{padding:0 20px 0 0;margin:0}
+footer a{color:var(--soft)}
+.me{text-align:center;margin-top:28px;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:700;color:var(--sand)}
+@media (max-width:520px){.card{padding:20px 16px}.title{font-size:27px}}
+@media (prefers-reduced-motion:no-preference){.card{transition:transform .2s}.card:hover{transform:translateY(-3px)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="tag">من الفيديو</span>
+    <h1>خمس <mark>مهارات</mark> لـ Claude</h1>
+    <p class="lead">دي المهارات اللي اتكلمت عنها في الفيديو. كل واحدة فيها شرح مختصر، وطريقة التثبيت، ورابط مصدرها الرسمي على GitHub.</p>
+  </header>
+
+  <!-- Arena -->
+  <section class="card arena" id="arena">
+    <div class="head"><span class="name">Arena</span><span class="title">١٠٠ نسخة تشتغل</span></div>
+    <p>لو رد Claude مش عاجبك، بدل ما تعيد السؤال شغّل <code dir="ltr">/arena</code>. بتعمل ١٠٠ نسخة تشتغل على نفس المهمة، كل واحدة بأسلوب تفكير مختلف، وبعدين بيتقابلوا اتنين اتنين ويقيّمهم حكم، والخاسر بيطلع، لحد ما يفضل أقوى رد.</p>
+    <ul class="what">
+      <li>بتشتغل جوه مجلد <code dir="ltr">.arena/</code> ومبتلمسش ملفاتك.</li>
+      <li>الجولات: ١٠٠ ← ٥٠ ← ٢٥ ← ١٣ ← ٧ ← ٤ ← ٢ ← ١.</li>
+      <li>رجّعلك الحل الفايز والهجمات اللي كسبها.</li>
+    </ul>
+    <div class="how">
+      <h3>التثبيت من Claude Code</h3>
+      <div class="cmd"><code>git clone https://github.com/Jakeschincariol/arena-skill.git</code><button data-copy>نسخ</button></div>
+      <div class="cmd"><code>cp -r arena-skill/skills/arena ~/.claude/skills/</code><button data-copy>نسخ</button></div>
+      <div class="note">أو ابعت رابط المصدر لـ Claude وقوله «ثبّت المهارة دي وتأكد إن <span dir="ltr">/arena</span> شغّال».</div>
+    </div>
+    <div class="btns"><a class="btn main" href="https://github.com/Jakeschincariol/arena-skill" target="_blank" rel="noopener">المصدر على GitHub</a></div>
+  </section>
+
+  <!-- Task Observer -->
+  <section class="card obs" id="task-observer">
+    <div class="head"><span class="name">Task Observer</span><span class="title">بيشوف تصحيحاتك</span></div>
+    <p>مهارة بتراقب شغلك مع Claude: بتلاحظ تصحيحاتك وتفضيلاتك، وبتقترح عليك تحسينات للسكيلز اللي عندك، وبتكتشف الشغل المتكرر وتقترح تحوّله لسكيل جديد.</p>
+    <ul class="what">
+      <li>بتسجّل ملاحظات وتحوّلها لتحسينات في مراجعة دورية، وانت اللي بتوافق.</li>
+      <li>بتراقب نفسها كمان وبتحسّن طريقتها.</li>
+    </ul>
+    <div class="how">
+      <h3>التثبيت (محتاج Node.js)</h3>
+      <div class="cmd"><code>npx skills add rebelytics/one-skill-to-rule-them-all --skill task-observer</code><button data-copy>نسخ</button></div>
+      <div class="note"><b>مهم:</b> بعد التثبيت ضيف تعليمة التفعيل من ملف <span dir="ltr">references/environments.md</span> في الـ CLAUDE.md بتاعك، وإلا ما هتشتغلش في كل جلسة. وللتطبيقات (ويب وديسكتوب) ارفع ملف <span dir="ltr">.skill</span> من آخر إصدار من Settings ← Customize.</div>
+    </div>
+    <div class="btns"><a class="btn main" href="https://github.com/rebelytics/one-skill-to-rule-them-all" target="_blank" rel="noopener">المصدر على GitHub</a></div>
+  </section>
+
+  <!-- Claude-Mem -->
+  <section class="card mem" id="claude-mem">
+    <div class="head"><span class="name">Claude-Mem</span><span class="title">بتساعد Claude يفتكر</span></div>
+    <p>Claude بينسى كل حاجة أول ما الجلسة تخلص. الأداة دي بتسجّل اللي حصل في جلساتك وتفتحلك الجلسة الجاية بذاكرة من الجلسة اللي قبلها.</p>
+    <ul class="what">
+      <li>الذاكرة بتتخزّن على جهازك في <code dir="ltr">~/.claude-mem</code>.</li>
+      <li>المزامنة السحابية اختيارية، وإحصائيات الاستخدام المجهولة شغّالة تلقائيًا ومتقفلة بأمر <code dir="ltr">npx claude-mem telemetry disable</code>.</li>
+    </ul>
+    <div class="how">
+      <h3>التثبيت</h3>
+      <div class="cmd"><code>npx claude-mem install</code><button data-copy>نسخ</button></div>
+      <div class="note">أو من جوه <bdi>Claude Code</bdi> بالأمرين دول واحد ورا التاني:</div><div class="cmd"><code>/plugin marketplace add thedotmack/claude-mem</code><button data-copy>نسخ</button></div><div class="cmd"><code>/plugin install claude-mem</code><button data-copy>نسخ</button></div><div class="note"> <b>انتبه:</b> المُثبّت بيطلب تسجيل دخول في المتصفح واختيار مزوّد للذاكرة (فيه فترة تجريبية بتطلب وسيلة دفع)، وتقدر تتخطاه بـ <span dir="ltr">--provider</span>.</div>
+    </div>
+    <div class="btns"><a class="btn main" href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener">المصدر على GitHub</a></div>
+  </section>
+
+  <!-- Headroom -->
+  <section class="card head-room" id="headroom">
+    <div class="head"><span class="name">Headroom</span><span class="title">توكنز أقل</span></div>
+    <p>بتضغط اللي Claude بيقراه (نواتج الأدوات واللوجات والملفات وتاريخ المحادثة) قبل ما يوصله، فتوكنز أقل والإجابات نفسها. الضغط بيتم على جهازك ومفيش محتوى بيتبعت لأي مكان عشان يتضغط.</p>
+    <ul class="what">
+      <li>في وصفهم الرسمي: توفير ٢١–٥٧٪ من توكنز الإدخال في أربع سيناريوهات قياس، وأكتر من ٩٠٪ في مصفوفات JSON واللوجات المتكررة، وقليل في النصوص العادية.</li>
+    </ul>
+    <div class="how">
+      <h3>التثبيت</h3>
+      <div class="cmd"><code>uv tool install --python 3.13 "headroom-ai[all]"</code><button data-copy>نسخ</button></div>
+      <div class="cmd"><code>headroom wrap claude</code><button data-copy>نسخ</button></div>
+      <div class="note">أو <span dir="ltr">pip install "headroom-ai[all]"</span>. وللتأكد إنه شغّال: <span dir="ltr">headroom doctor</span>. ملحوظة: التثبيت الكامل بيحمّل مساحة كبيرة على القرص.</div>
+    </div>
+    <div class="btns"><a class="btn main" href="https://github.com/headroomlabs-ai/headroom" target="_blank" rel="noopener">المصدر على GitHub</a><a class="btn ghost" href="https://docs.headroomlabs.ai/docs/quickstart" target="_blank" rel="noopener">الدليل السريع</a></div>
+  </section>
+
+  <!-- OmniRoute -->
+  <section class="card omni" id="omniroute">
+    <div class="head"><span class="name">OmniRoute</span><span class="title">بوابة واحدة</span></div>
+    <p>بوابة واحدة على جهازك لأكتر من مزوّد. تطبيقاتك بتتصل بيها هي، ولو الـ<bdi>Limit</bdi> الخاص بـ <bdi>Claude</bdi> خلص بتحوّل للمزوّد التاني تلقائيًا.</p>
+    <ul class="what">
+      <li>بتشتغل مع أدوات زي <bdi>Claude Code</bdi> و<bdi>Cursor</bdi> و<bdi>Cline</bdi>، وبتتحكم فيها من لوحة تحكم محلية.</li>
+    </ul>
+    <div class="how">
+      <h3>التثبيت</h3>
+      <div class="cmd"><code>npm install -g omniroute</code><button data-copy>نسخ</button></div>
+      <div class="note"><b>راجع شروط استخدام كل مزوّد</b> قبل ما تربط حساباتك، ومشاريع التوجيه بين المزوّدين ممكن تتعارض مع شروط بعضهم. وبتحتاج تضيف حسابات المزوّدين بنفسك.</div>
+    </div>
+    <div class="btns"><a class="btn main" href="https://github.com/diegosouzapw/OmniRoute" target="_blank" rel="noopener">المصدر على GitHub</a><a class="btn ghost" href="https://omniroute.online" target="_blank" rel="noopener">الموقع الرسمي</a></div>
+  </section>
+
+  <footer>
+    <h2>المصادر والتراخيص</h2>
+    <ul>
+      <li>الصفحة دي بتشاور على المصادر الرسمية للمشاريع، ومش بتعيد استضافة ملفاتها. التحميل والتثبيت من مستودعاتها.</li>
+      <li><bdi>Arena</bdi>: ترخيص <bdi>MIT</bdi>. <bdi>Claude-Mem</bdi> و<bdi>Headroom</bdi>: <bdi>Apache-2.0</bdi>. <bdi>OmniRoute</bdi>: <bdi>MIT</bdi>.</li>
+      <li><bdi>Task Observer</bdi>: ترخيص <bdi>CC BY 4.0</bdi>، من تأليف <a href="https://github.com/rebelytics" target="_blank" rel="noopener">rebelytics</a> (Augmented Expertise).</li>
+      <li>الأسماء والعلامات التجارية لأصحابها.</li>
+    </ul>
+    <div class="me"><bdi>@hosam.gebaly</bdi></div>
+  </footer>
+</div>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.previousElementSibling.textContent, old=b.textContent;
+    function done(){b.textContent='اتنسخ ✓';setTimeout(function(){b.textContent=old},1600)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){sel()})}else{sel()}
+    function sel(){var r=document.createRange();r.selectNodeContents(b.previousElementSibling);var s=getSelection();s.removeAllRanges();s.addRange(r);done()}
+  });
+});
+</script>
+</body>
+</html>
